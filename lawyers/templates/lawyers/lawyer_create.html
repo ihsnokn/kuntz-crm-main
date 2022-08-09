@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+        <a href="{% url 'lawyers:lawyer-list' %}"> Avukatlara geri dön </a>
+        <hr />
+        <h1> Yeni avukat oluştur. </h1>
+        <form method="post" >
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Yükle</button>
+        </form>
+{% endblock content %}

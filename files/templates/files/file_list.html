@@ -1,0 +1,182 @@
+{% extends "base.html" %} {% block content %}
+
+<section class="flex flex-wrap -mx-3">
+  <div class="flex-none w-full max-w-full px-3">
+    <div
+      class="w-full mb-6 py-6 flex justify-between items-center border-b border-gray-200"
+    >
+      <div>
+        <h1 class="text-4xl text-gray-800">Dosyalar</h1>
+      </div>
+      <div>
+        <a
+          class="text-gray-550 hover:text-blue-500"
+          href="{% url 'files:File_create'%}"
+        >
+          Yeni dosya yükle</a
+        >
+      </div>
+    </div>
+
+    {% comment %}
+    <div
+      class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border"
+    >
+      <div class="p-4">
+        <label for="table-search" class="sr-only">Search</label>
+        <div class="relative mt-1">
+          <div
+            class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+          >
+            <svg
+              class="w-5 h-5 text-gray-500 dark:text-gray-400"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </div>
+          <input
+            type="text"
+            id="table-search"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Search for items"
+          />
+        </div>
+      </div>
+      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead
+          class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+        >
+          <tr>
+            <th scope="col" class="p-4">
+              <div class="flex items-center">
+                <input
+                  id="checkbox-all-search"
+                  type="checkbox"
+                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                />
+                <label for="checkbox-all-search" class="sr-only"
+                  >checkbox</label
+                >
+              </div>
+            </th>
+            <th scope="col" class="px-6 py-3">Dosya No</th>
+            <th scope="col" class="px-6 py-3">Başvuran</th>
+            <th scope="col" class="px-6 py-3">Başvurulan</th>
+            <th scope="col" class="px-6 py-3">Plaka</th>
+            <th scope="col" class="px-6 py-3">Başvuru Konusu</th>
+            <th scope="col" class="px-6 py-3">Dava Tarihi</th>
+            <th scope="col" class="px-6 py-3">Dosya Durumu</th>
+            <th scope="col" class="px-6 py-3">Oluşturan</th>
+            <th scope="col" class="px-6 py-3">
+              <span class="sr-only">Edit</span>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for file in files%}
+
+          <tr
+            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+          >
+            <td class="w-4 p-4">
+              <div class="flex items-center">
+                <input
+                  id="checkbox-table-search-1"
+                  type="checkbox"
+                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                />
+                <label for="checkbox-table-search-1" class="sr-only"
+                  >checkbox</label
+                >
+              </div>
+            </td>
+            <th
+              scope="row"
+              class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
+            >
+              {{file.dosya_no}}
+            </th>
+            <td class="px-6 py-4">{{file.basvuran}}</td>
+            <td class="px-6 py-4">{{file.basvurulan}}</td>
+            <td class="px-6 py-4">{{file.plaka}}</td>
+            <td class="px-6 py-4">{{file.basvuru_konusu}}</td>
+            <td class="px-6 py-4">{{file.dava_tarihi}}</td>
+            <td class="px-6 py-4">{{file.dosya_durumu}}</td>
+            <td class="px-6 py-4">{{file.olusturan}}</td>
+            <td class="px-6 py-4 text-right">
+              <a
+                href="{% url 'files:file-detail' file.pk %}"
+                class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                >Edit</a
+              >
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% endcomment %}
+    <div class="tracking-wider leading-normal">
+      <!--Container-->
+      <div class="container">
+        <!--Card-->
+        <div id="recipients" class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
+          <table
+            id="example"
+            class="stripe hover"
+            style="width: 100%; padding-top: 1em; padding-bottom: 1em"
+          >
+            <thead>
+              <tr>
+                <th data-priority="1">Dosya No</th>
+                <th data-priority="2">Başvuran</th>
+                <th data-priority="3">Başvurulan</th>
+                <th data-priority="4">Plaka</th>
+                <th data-priority="5">Başvuru Konusu</th>
+                <th data-priority="6">Dava Tarihi</th>
+                <th data-priority="7">Dosya Durumu</th>
+                <th data-priority="8">Oluşturan</th>
+                <th data-priority="9"><span class="sr-only">Edit</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for file in files%}
+              <tr>
+                <td>{{file.dosya_no}}</td>
+                <td>{{file.basvuran}}</td>
+                <td>{{file.basvurulan}}</td>
+                <td>{{file.plaka}}</td>
+                <td>{{file.basvuru_konusu}}</td>
+                <td>{{file.dava_tarihi}}</td>
+                <td>{{file.dosya_durumu}}</td>
+                <td>{{file.olusturan}}</td>
+                <td>
+                  <a
+                    href="{% url 'files:filedetail' file.id %}"
+                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                    >Edit</a
+                  >
+                </td>
+              </tr>
+
+              <!-- Rest of your data (refer to https://datatables.net/examples/server_side/ for server side processing)-->
+
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+        <!--/Card-->
+      </div>
+      <!--/container-->
+    </div>
+  </div>
+</section>
+{% endblock content %}

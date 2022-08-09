@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+        <a href="{% url 'files:file-list' %}"> Dosyalara geri dön</a>
+        <hr />
+        <h1> Dosyayı silmek istediğine emin misin? </h1>
+        <form method="post" >
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">SİL</button>
+        </form>
+{% endblock content %}

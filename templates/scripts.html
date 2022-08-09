@@ -1,0 +1,49 @@
+{% load static %} {% comment %}
+<script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
+
+<script src="{% static 'js/main.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/sidebar.js' %}"></script>
+{% endcomment %}
+<!-- plugin for charts  -->
+<script src="{% static 'js/plugins/chartjs.min.js' %}" async></script>
+<script src="{% static 'js/plugins/Chart.extension.js' %}"></script>
+<script src="{% static 'js/chart-1.js' %}"></script>
+<script src="{% static 'js/chart-2.js' %}"></script>
+<!-- plugin for scrollbar  -->
+<script src="{% static 'js/plugins/perfect-scrollbar.min.js' %}" async></script>
+<script src="{% static 'js/fixed-plugin.js' %}"></script>
+
+<!-- github button -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<!-- main script file  -->
+<script src="{% static 'js/soft-ui-dashboard-tailwind.js' %}"></script>
+<script
+  src="{% static 'js/soft-ui-dashboard-tailwind.min.js' %}"
+  async
+></script>
+<script src="{% static 'js/dropdown.js' %}"></script>
+<script src="{% static 'js/sidenav-burger.js' %}"></script>
+<script src="{% static 'js/nav-pills.js' %}"></script>
+<script src="{% static 'js/navbar-collapse.js' %}"></script>
+<script src="{% static 'js/navbar-sticky.js' %}"></script>
+<script src="{% static 'js/perfect-scrollbar.js' %}"></script>
+<script src="{% static 'js/tooltips.js' %}"></script>
+<!-- jQuery -->
+<script
+  type="text/javascript"
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+></script>
+
+<!--Datatables -->
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<script>
+  $(document).ready(function () {
+    var table = $("#example")
+      .DataTable({
+        responsive: true,
+      })
+      .columns.adjust()
+      .responsive.recalc();
+  });
+</script>

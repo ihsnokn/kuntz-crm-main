@@ -1,0 +1,78 @@
+{% extends "base.html" %} {% block content %}
+<a href="{% url 'files:file-list' %}"> Dosyalara geri dön</a>
+<hr />
+<h1>Yeni dosya oluştur.</h1>
+
+{% comment %} 
+  <div>
+    {{ form }}
+  </div>
+<div >
+  {{ formimage}}
+</div> {% endcomment %}
+
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div>
+    <label for="id_dosya_no">Dosya no:</label>   
+      <input type="number" name="dosya_no" value="0" min="-9223372036854775808" max="9223372036854775807" required="" id="id_dosya_no">
+    <label for="id_basvuran">Basvuran:</label>
+
+      <input type="text" name="basvuran" maxlength="30" required="" id="id_basvuran">
+
+    <label for="id_basvurulan">Basvurulan:</label>
+    
+      
+      <input type="text" name="basvurulan" maxlength="30" required="" id="id_basvurulan">
+
+    <label for="id_plaka">Plaka:</label>
+
+      <input type="text" name="plaka" maxlength="10" required="" id="id_plaka">
+
+    <label for="id_basvuru_konusu">Basvuru konusu:</label>
+    
+      
+      <textarea name="basvuru_konusu" cols="40" rows="10" maxlength="150" required="" id="id_basvuru_konusu"></textarea>
+      
+    <label for="id_dava_tarihi">Dava tarihi:</label>
+
+      <input type="date" name="dava_tarihi" id="id_dava_tarihi">
+
+    <label for="id_dosya_durumu">Dosya durumu:</label>
+
+
+        {{form.dosya_durumu}}
+
+
+      
+      
+    
+  
+
+  
+    <label for="id_olusturan">Olusturan:</label>
+    
+      
+      <input type="text" name="olusturan" maxlength="30" required="" id="id_olusturan">
+      
+      
+    
+  
+
+  
+    <label for="id_lawyer">Lawyer:</label>
+    
+      
+    {{form.lawyer}}
+
+  </div>
+
+<div>
+    <label for="id_image">Image:</label>
+      <input type="file" name="image" multiple="" required="" id="id_image">
+</div>
+
+  <button type="submit">Yükle</button>
+</form>
+
+{% endblock content %}
