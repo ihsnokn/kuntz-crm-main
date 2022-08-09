@@ -2,73 +2,57 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KUNT CRM</title>
-    <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
 
-    <link
-      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
-    <!--     Fonts and icons     -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
-      rel="stylesheet"
-    />
-    <!-- Font Awesome Icons -->
-    <script
-      src="https://kit.fontawesome.com/42d5adcbca.js"
-      crossorigin="anonymous"
-    ></script>
-    <!-- Nucleo Icons -->
-    <link href="{% static 'css/nucleo-icons.css' %}" rel="stylesheet" />
-    <link href="{% static 'css/nucleo-svg.css' %}" rel="stylesheet" />
-    <!-- Popper -->
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
-    <!-- Main Styling -->
-    <link href="{% static 'css/styles.css?v=1.0.3' %}" rel="stylesheet" />
-    <!--Regular Datatables CSS-->
-    <link
-      href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"
-      rel="stylesheet"
-    />
-    <!--Responsive Extension Datatables CSS-->
-    <link
-      href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css"
-      rel="stylesheet"
-    />
-    <link href="{% static 'css/table.css' %}" rel="stylesheet" />
-  </head>
-  <body
-    class="m-0 font-sans antialiased font-normal text-size-base leading-default bg-gray-50 text-slate-500"
-  >
-    {% comment %}
-    <div>{% include "navbar.html" %}</div>
-    {% endcomment %}
-    <aside
-      class="max-w-62.5 ease-nav-brand z-990 fixed inset-y-0 my-4 ml-4 block w-full -translate-x-full flex-wrap items-center justify-between overflow-y-auto rounded-2xl border-0 bg-white p-0 antialiased shadow-none transition-transform duration-200 xl:left-0 xl:translate-x-0 xl:bg-transparent"
-    >
-      {% include "sidenav.html" %}
-    </aside>
-    <main
-      class="ease-soft-in-out xl:ml-68.5 relative h-full max-h-screen rounded-xl transition-all duration-200"
-    >
-      <nav
-        class="relative flex flex-wrap items-center justify-between px-0 py-2 mx-6 transition-all shadow-none duration-250 ease-soft-in rounded-2xl lg:flex-nowrap lg:justify-start"
-        navbar-main
-        navbar-scroll="true"
-      >
-        {% include "navbar.html" %}
-      </nav>
-      <div class="w-full px-6 py-6 mx-auto">
-        {% block content %} {% endblock content %}
-        <footer class="pt-4">{% include "footer.html" %}</footer>
-      </div>
-    </main>
-    <div>{% include "fixed.html" %}</div>
-  </body>
-  {% include "scripts.html" %}
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KUNT CRM</title>
+  <link href="{% static 'css/styles.css' %}" rel="stylesheet" />
+
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <!-- Nucleo Icons -->
+  <link href="{% static 'css/nucleo-icons.css' %}" rel="stylesheet" />
+  <link href="{% static 'css/nucleo-svg.css' %}" rel="stylesheet" />
+  <!-- Popper -->
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <!-- Main Styling -->
+  <link href="{% static 'css/styles.css?v=1.0.3' %}" rel="stylesheet" />
+  <!--Regular Datatables CSS-->
+  <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+  <!--Responsive Extension Datatables CSS-->
+  <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet" />
+  <link href="{% static 'css/table.css' %}" rel="stylesheet" />
+</head>
+
+<body class="m-0 font-sans antialiased font-normal text-size-base leading-default bg-gray-50 text-slate-500">
+  {% comment %}
+  <div>{% include "navbar.html" %}</div>
+  {% endcomment %}
+
+  {% include "sidenav.html" %}
+
+  <main class="ease-soft-in-out xl:ml-68.5 relative h-full max-h-screen rounded-xl transition-all duration-200">
+
+    {% include "navbar.html" %}
+
+    <div class="w-full px-6 py-6 mx-auto">
+      {% block content %} {% endblock content %}
+
+    </div>
+    {% include "footer.html" %}
+  </main>
+
+
+
+  <div>
+    {% include "fixed.html" %}
+  </div>
+</body>
+{% include "scripts.html" %}
+
 </html>

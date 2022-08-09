@@ -1,78 +1,64 @@
 {% extends "base.html" %} {% block content %}
-<a href="{% url 'files:file-list' %}"> Dosyalara geri dön</a>
-<hr />
-<h1>Yeni dosya oluştur.</h1>
 
-{% comment %} 
-  <div>
-    {{ form }}
-  </div>
-<div >
-  {{ formimage}}
-</div> {% endcomment %}
+<button type="button" class="inline-block px-6 py-3 mr-3 font-bold text-center uppercase align-middle transition-all bg-transparent border rounded-lg cursor-pointer border-fuchsia-500 leading-pro text-size-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-fuchsia-500"><a href="{% url 'files:file-list' %}"> Dosyalara geri dön</a></button>
+<br>
+<h1 class="py-2.2-em px-3.6-em text-size-xs-em rounded-1.8 inline-block whitespace-nowrap text-center bg-slate-650 text-slate-750 align-baseline font-bold uppercase leading-none">Yeni dosya oluştur.</h1>
+<hr><hr><hr>
+
 
 <form method="post" enctype="multipart/form-data">
   {% csrf_token %}
   <div>
     <label for="id_dosya_no">Dosya no:</label>   
-      <input type="number" name="dosya_no" value="0" min="-9223372036854775808" max="9223372036854775807" required="" id="id_dosya_no">
+      <input type="number" name="dosya_no"  min="0" max="9999999999" placeholder="Dosya No" class="focus:shadow-soft-primary-outline text-size-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none" required="" id="id_dosya_no">
     <label for="id_basvuran">Basvuran:</label>
 
-      <input type="text" name="basvuran" maxlength="30" required="" id="id_basvuran">
+      <input type="text" name="basvuran" id="id_basvuran" placeholder="Başvuran" maxlength="30" class="focus:shadow-soft-primary-outline text-size-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">
 
     <label for="id_basvurulan">Basvurulan:</label>
     
       
-      <input type="text" name="basvurulan" maxlength="30" required="" id="id_basvurulan">
+      <input type="text" name="basvurulan" id="id_basvurulan" placeholder="Başvurulan" maxlength="30" class="focus:shadow-soft-primary-outline text-size-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">
 
     <label for="id_plaka">Plaka:</label>
 
-      <input type="text" name="plaka" maxlength="10" required="" id="id_plaka">
+      <input type="text" name="plaka" id="id_plaka" maxlength="10" placeholder="Plaka" maxlength="30" class="focus:shadow-soft-primary-outline text-size-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">
 
     <label for="id_basvuru_konusu">Basvuru konusu:</label>
     
       
-      <textarea name="basvuru_konusu" cols="40" rows="10" maxlength="150" required="" id="id_basvuru_konusu"></textarea>
-      
-    <label for="id_dava_tarihi">Dava tarihi:</label>
+      <textarea name="basvuru_konusu" rows="3" maxlength="150" placeholder="Başvuru Konusunu Giriniz..."  id="id_basvuru_konusu" class="focus:shadow-soft-primary-outline min-h-unset text-size-sm leading-5.6 ease-soft block h-auto w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none"></textarea>
 
-      <input type="date" name="dava_tarihi" id="id_dava_tarihi">
-
-    <label for="id_dosya_durumu">Dosya durumu:</label>
-
-
-        {{form.dosya_durumu}}
-
-
-      
-      
-    
-  
-
-  
     <label for="id_olusturan">Olusturan:</label>
     
       
-      <input type="text" name="olusturan" maxlength="30" required="" id="id_olusturan">
+    <input type="text" name="olusturan" id="id_olusturan" maxlength="30" placeholder="Oluşturan"  class="focus:shadow-soft-primary-outline text-size-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">
       
-      
-    
-  
+<div class="px-3 py-2">
 
-  
-    <label for="id_lawyer">Lawyer:</label>
-    
+    <label for="id_dava_tarihi">Dava tarihi:</label>
+
+      <input type="date" name="dava_tarihi" id="id_dava_tarihi"  placeholder="Dava Tarihi"  class="focus:shadow-soft-primary-outline text-size-sm leading-5.6 ease-soft inline appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">
+
+    <label for="id_dosya_durumu"> Dosya durumu:</label>
+
+      <div class="focus:shadow-soft-primary-outline text-size-sm leading-5.6 ease-soft  inline w-full  appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">
+        {{form.dosya_durumu}} 
+      </div>
+      <label for="id_lawyer"> Lawyer:</label>
+    <div class="focus:shadow-soft-primary-outline text-size-sm leading-5.6 ease-soft  inline w-full  appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">
       
     {{form.lawyer}}
-
+  </div>
+  </div>
   </div>
 
 <div>
-    <label for="id_image">Image:</label>
+    <label for="id_image">Dosya:</label>
       <input type="file" name="image" multiple="" required="" id="id_image">
 </div>
-
-  <button type="submit">Yükle</button>
+<br>
+  <button type="submit" class="inline-block px-6 py-3 mr-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-fuchsia leading-pro text-size-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs">Yükle</button>
 </form>
 
 {% endblock content %}

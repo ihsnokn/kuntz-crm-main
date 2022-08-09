@@ -1,6 +1,6 @@
 from django import forms
 from matplotlib import widgets
-from .models import File,Image
+from .models import File, Image
 from django.forms import ClearableFileInput
 from django.contrib.auth.forms import UserCreationForm, UsernameField
 from django.contrib.auth import get_user_model
@@ -31,18 +31,18 @@ User = get_user_model()
 
 class FileModelForm(forms.ModelForm):
    # dosya = forms.FileField(
-    #label="Dosya",
+    # label="Dosya",
     #widget=forms.ClearableFileInput(attrs={"multiple": True}),
-    #)
+    # )
     class Meta:
         model = File
         fields = ('__all__')
 
         error_messages = {
 
-               
-            }
-        
+
+        }
+
 
 class FileForm(forms.Form):
     SOURCE_CHOICES = (
@@ -64,14 +64,15 @@ class FileForm(forms.Form):
     basvurulan = forms.CharField()
     plaka = forms.CharField()
     basvuru_konusu = forms.CharField(widget=forms.Textarea)
-    dava_tarihi = forms.DateField(initial=datetime.date.today)
+    dava_tarihi = forms.DateTimeField(initial=datetime.date.today)
+
     dosya_durumu = forms.MultipleChoiceField(
         required=False, widget=forms.CheckboxSelectMultiple, choices=SOURCE_CHOICES,)
     olusturan = forms.CharField(max_length=30)
 
     # file upload#######################
     dosya = forms.FileField(
-     required=False, widget=forms.ClearableFileInput(attrs={'multiple': True}))
+        required=False, widget=forms.ClearableFileInput(attrs={'multiple': True}))
 
     #lawyer = forms.CharField()
     # lawyer = forms.ForeignKey(Lawyer, on_delete=models.CAasaSCADE1) """
@@ -82,7 +83,6 @@ class CustomUserCreationForm(UserCreationForm):
         model = User
         fields = ("username",)
         field_classes = {'username': UsernameField}
-
 
 
 class ImageForm(forms.ModelForm):

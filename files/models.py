@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models.signals import post_save
 from django.contrib.auth.models import AbstractUser
 from django import forms
+import os
 
 
 class User(AbstractUser):  # auth.models in prebuild user modeli
@@ -48,7 +49,7 @@ class File(models.Model):
     basvuru_konusu = models.TextField(max_length=150)
     dava_tarihi = models.DateField(max_length=30, null=True, blank=True)
     dosya_durumu = models.CharField(
-    default='', choices=SOURCE_CHOICES, max_length=100)
+        default='', choices=SOURCE_CHOICES, max_length=100)
     olusturan = models.CharField(max_length=30)
 
     # File upload handle
@@ -59,12 +60,15 @@ class File(models.Model):
 
     def __str__(self):
         return f"{self.basvuran} {self.basvurulan}"
+
     @property
     def get_image(self):
         image = self.image_set.all()
-        return image 
+        return image
 
-#------ Signals -----
+# ------ Signals -----
+
+
 def post_user_created_signal(sender, instance, created, **kwargs):
     print(instance, created)
     if created:
@@ -79,12 +83,17 @@ class Image(models.Model):
     image = models.FileField(upload_to='class')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
     def __str__(self):
         return str(self.image)
+
+    def filename(self):
+        return os.path.basename(self.image.name)
+
     @property
     def imageURL(self):
         try:
-            url=self.image.url
+            url = self.image.url
         except:
-            url=''
+            url = ''
         return url
