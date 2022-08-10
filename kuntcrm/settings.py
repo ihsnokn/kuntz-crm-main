@@ -138,9 +138,8 @@ STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
 
-STATIC_ROOT = "static_root"
+STATIC_ROOT = "static"
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-DISABLE_COLLECTSTATIC = 1
 
 
 # Default primary key field type
