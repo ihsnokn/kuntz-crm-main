@@ -4,7 +4,6 @@ from django.shortcuts import render, redirect, reverse,get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import send_mail
 from django.http import HttpResponse, HttpResponseRedirect
-
 from files.helper import classification_helper
 from .models import File, Image, Lawyer
 from .forms import FileForm, FileModelForm, CustomUserCreationForm, ImageForm
@@ -123,7 +122,6 @@ class FileDeleteView(LoginRequiredMixin, generic.DeleteView):
 
     def get_success_url(self):
         return reverse("files:file-list")
-
 
 def file_delete(request, pk):
     file = File.objects.get(id=pk)
