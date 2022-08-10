@@ -187,27 +187,4 @@ if not DEBUG:
 
     ALLOWED_HOSTS = ["*"]
 
-    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-    EMAIL_HOST = env("EMAIL_HOST")
-    EMAIL_HOST_USER = env("EMAIL_HOST_USER")
-    EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
-    EMAIL_USE_TLS = True
-    EMAIL_PORT = env("EMAIL_PORT")
-    DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL")
-
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'root': {
-        'handlers': ['console'],
-        'level': 'WARNING',
-    },
-}
-
-TAILWIND_APP_NAME = 'theme'
+    
